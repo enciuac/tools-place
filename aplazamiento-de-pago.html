@@ -410,7 +410,7 @@ button[disabled]{opacity:.7;cursor:wait}
       </div>
       <div class="full"><label for="obs">Observaciones</label><textarea id="obs" name="Observaciones" placeholder="Número de pedido o presupuesto, equipos que te interesan…"></textarea></div>
       <p class="pnote">Tools Place se reserva el derecho de establecer la forma de pago y el plazo que considere adecuados conforme a sus propios criterios y políticas internas.</p>
-      <label class="check full"><input type="checkbox" name="Aviso legal y privacidad" value="Aceptado" required> Al enviar este formulario aceptas el <a href="aviso-legal.html" target="_blank" style="color:#fff;text-decoration:underline">aviso legal</a> y la <a href="politica-de-privacidad.html" target="_blank" style="color:#fff;text-decoration:underline">política de privacidad</a>. *</label>
+      <label class="check full"><input type="checkbox" name="Aviso legal y privacidad" value="Aceptado" required> <span>Al enviar este formulario aceptas el <a href="aviso-legal.html" target="_blank" style="color:#fff;text-decoration:underline">aviso legal</a> y la <a href="politica-de-privacidad.html" target="_blank" style="color:#fff;text-decoration:underline">política de privacidad</a>. *</span></label>
       <p class="fstatus full" role="status" aria-live="polite"></p>
       <div class="full"><button class="btn btn-primary" type="submit">Enviar solicitud <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button></div>
     </form>
@@ -501,6 +501,7 @@ function wireForm(form,okMsg){
       form.reset();form.dispatchEvent(new Event('reset-ui'));
       st.textContent=okMsg;st.classList.add('ok');btn.innerHTML=label;
     }catch(err){
+      console.warn('Formulario no enviado:',err.message);
       st.textContent='No se ha podido enviar. Inténtalo de nuevo o escríbenos a info@toolsplace.es / +34 617 879 087.';st.classList.add('err');btn.innerHTML=label;
     }finally{btn.disabled=false}
   });

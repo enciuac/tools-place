@@ -589,7 +589,7 @@ button[disabled]{opacity:.7;cursor:wait}
         <div class="full"><label for="s">Superficie aproximada</label>
           <select id="s" name="Superficie"><option>Menos de 200 m²</option><option>200 – 1.000 m²</option><option>1.000 – 5.000 m²</option><option>Más de 5.000 m²</option></select></div>
         <div class="full"><label for="msg">Mensaje</label><textarea id="msg" name="Mensaje" placeholder="Tipo de actividad, altura de la nave, horario de uso…"></textarea></div>
-        <label class="check full"><input type="checkbox" name="Privacidad" value="Aceptada" required> He leído y acepto la <a href="politica-de-privacidad.html" target="_blank" style="color:#fff;text-decoration:underline">Política de Privacidad</a>.</label>
+        <label class="check full"><input type="checkbox" name="Privacidad" value="Aceptada" required> <span>He leído y acepto la <a href="politica-de-privacidad.html" target="_blank" style="color:#fff;text-decoration:underline">Política de Privacidad</a>.</span></label>
         <p class="fstatus full" role="status" aria-live="polite"></p>
         <div class="full"><button class="btn btn-primary" type="submit">Enviar consulta <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button></div>
       </form>
@@ -799,6 +799,7 @@ function wireForm(form,okMsg){
       form.reset();form.dispatchEvent(new Event('reset-ui'));
       st.textContent=okMsg;st.classList.add('ok');btn.innerHTML=label;
     }catch(err){
+      console.warn('Formulario no enviado:',err.message);
       st.textContent='No se ha podido enviar. Inténtalo de nuevo o escríbenos a info@toolsplace.es / +34 617 879 087.';st.classList.add('err');btn.innerHTML=label;
     }finally{btn.disabled=false}
   });
