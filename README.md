@@ -17,18 +17,21 @@ Cualquier enlace con `data-cookie-settings` reabre el panel (hay uno en el pie d
 Si se añaden otras cookies (p. ej. Meta Pixel), hay que cargarlas desde `apply()` en ese archivo, subir `VERSION`
 para volver a pedir el consentimiento y añadirlas a la tabla de `politica-de-cookies.html`.
 
-Sitio estático (HTML/CSS/JS, sin build). GitHub Pages: Settings → Pages → Deploy from branch → `main` / root.
+Sitio estático (HTML/CSS/JS, sin build) + `enviar.php` para los formularios. Se aloja en el Plesk
+(mismo servidor que catalogo.blizzcool.es). GitHub Pages sirve como vista previa: Settings → Pages → `main` / root.
 
-## Formularios (FormSubmit.co)
+## Formularios (`enviar.php`)
 
-| Formulario | Destinatarios |
+Los dos formularios se envían a `enviar.php`, en nuestro propio servidor, igual que catalogo.blizzcool.es
+(POST con FormData, respuesta `{"ok":true}`). No depende de servicios externos ni necesita activación.
+
+| Formulario (`_form`) | Destinatarios |
 |---|---|
-| Contacto (portada) | info@toolsplace.es |
-| Aplazamiento de pago | administracion@toolsplace.es + copia a info@toolsplace.es |
+| `contacto` (portada) | info@toolsplace.es |
+| `aplazamiento` | administracion@toolsplace.es + copia a info@toolsplace.es |
 
-**Activación (solo la primera vez):** envía una prueba desde cada formulario publicado.
-FormSubmit mandará un correo "Activate Form" a **info@toolsplace.es** y a **administracion@toolsplace.es**:
-hay que pulsar el botón de activación en cada uno. A partir de ahí los avisos llegan solos.
-
-Opcional: tras activar, FormSubmit ofrece un alias aleatorio para no mostrar el correo en el código;
-se sustituye en el atributo `action` del `<form>`.
+- Los destinatarios están fijados en `enviar.php` (constante `FORMULARIOS`), no en el HTML.
+- Remitente: `no-reply@toolsplace.es` (el SPF de toolsplace.es autoriza este servidor). "Responder" contesta al cliente.
+- Protección: campo trampa `_honey`, solo peticiones desde la propia web, máximo 5 envíos por IP cada 10 minutos.
+- Donde no hay PHP (vista previa en GitHub Pages o en local) los formularios usan FormSubmit como respaldo;
+  esa vía sí necesita la activación por email de FormSubmit.
