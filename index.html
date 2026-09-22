@@ -176,17 +176,28 @@ section{position:relative}
 
 /* ---------- 360 ---------- */
 .dial-sec{background:radial-gradient(60% 80% at 50% 0%,rgba(47,123,246,.12),transparent 70%),var(--bg-2);border-block:1px solid var(--line);overflow:hidden}
-.dial-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.dial-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"head dial" "ctrl dial" "reco dial";column-gap:60px;align-items:center}
+.dial-head{grid-area:head;align-self:end}.dial-ctrl{grid-area:ctrl}.dial-grid .reco{grid-area:reco;align-self:start}.dial-wrap{grid-area:dial}
 .dial-wrap{position:relative;display:grid;place-items:center}
 .dial{width:min(460px,100%);aspect-ratio:1;position:relative}
 .dial svg{width:100%;height:100%;overflow:visible}
 .dial-center{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
 .dial-center b{font-size:clamp(3rem,7vw,5rem);font-weight:900;line-height:1;font-variant-numeric:tabular-nums;transition:color .3s}
 .dial-center small{display:block;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;font-size:.7rem;margin-top:8px}
-.range{width:100%;margin-top:26px;-webkit-appearance:none;appearance:none;height:10px;border-radius:10px;background:linear-gradient(90deg,var(--cool-2),var(--cool) 30%,#9aa6b8 50%,var(--heat) 70%,var(--heat-2));outline:none}
+.range{width:100%;margin-top:26px;touch-action:pan-y;-webkit-appearance:none;appearance:none;height:10px;border-radius:10px;background:linear-gradient(90deg,var(--cool-2),var(--cool) 30%,#9aa6b8 50%,var(--heat) 70%,var(--heat-2));outline:none}
 .range::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;border:4px solid var(--bg);box-shadow:0 0 0 2px #fff,0 6px 18px rgba(0,0,0,.5);cursor:grab}
 .range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--bg);cursor:grab}
 .range-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:.75rem;margin-top:10px}
+.xr{position:relative;display:block;padding:11px 0;cursor:pointer;touch-action:pan-y;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;--xt:28px}
+.xr>input{pointer-events:none;margin:0!important;display:block}
+.xr>input::-webkit-slider-thumb{opacity:0}
+.xr>input::-moz-range-thumb{opacity:0}
+.xr-thumb{position:absolute;top:50%;left:calc(var(--xt) / 2 + var(--xp,0) * (100% - var(--xt)));width:var(--xt);height:var(--xt);box-sizing:border-box;border-radius:50%;background:#fff;border:4px solid var(--bg);box-shadow:0 0 0 2px #fff,0 6px 18px rgba(0,0,0,.5);transform:translate(-50%,-50%);pointer-events:none}
+.xr:focus-within .xr-thumb{box-shadow:0 0 0 2px #fff,0 0 0 7px rgba(255,255,255,.25),0 6px 18px rgba(0,0,0,.5)}
+@media (max-width:640px){.xr{--xt:34px;padding:14px 0}}
+.dial-ctrl .xr{margin-top:15px}
+@media (max-width:1024px){.dial-ctrl .xr{margin-top:7px}}
+
 .reco{margin-top:30px;padding:26px;border-radius:20px;background:var(--panel);border:1px solid var(--line);min-height:170px;transition:border-color .4s,box-shadow .4s}
 .reco .who{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
 .reco h4{font-size:1.35rem;margin:6px 0 8px;line-height:1.2}
@@ -273,7 +284,11 @@ footer p{color:var(--muted);font-size:.9rem;margin-top:16px;max-width:340px}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:1024px){
-  .maker,.dial-grid,.contact{grid-template-columns:1fr}
+  .maker,.contact{grid-template-columns:1fr}
+  .dial-grid{grid-template-columns:1fr;grid-template-areas:"head" "dial" "ctrl" "reco"}
+  .dial-head{text-align:center}.dial-head .lead{margin-inline:auto}
+  .dial-wrap{margin:24px 0 -30px}.dial{width:min(320px,72vw)}
+  .dial-ctrl,.dial-grid .reco{max-width:560px;width:100%;justify-self:center}.dial-ctrl .range{margin-top:18px}
   .brands{grid-template-columns:1fr}
   .process,.values{grid-template-columns:1fr 1fr}
   .process::before{display:none}
@@ -287,9 +302,15 @@ footer p{color:var(--muted);font-size:.9rem;margin-top:16px;max-width:340px}
 }
 @media (max-width:640px){
   .wrap{width:calc(100% - 32px)}
-  .hero{min-height:680px}
-  .knob{width:88px;height:88px}.knob b{font-size:1.4rem}
-  .hero-labels{bottom:90px}
+  /* hero en móvil: el alto lo marca el contenido; control y etiquetas debajo de los botones */
+  .hero{height:auto;min-height:100svh;display:flex;flex-direction:column}
+  .hero-content{position:relative;inset:auto;flex:1;justify-content:flex-start;padding:112px 0 232px}
+  .hero h1{font-size:clamp(2.3rem,11vw,3rem);margin:14px 0 16px}
+  .hero p.lead{font-size:.98rem}
+  .hero-cta{margin-top:26px;flex-direction:column;align-items:stretch}.hero-cta .btn{justify-content:center}
+  .knob{top:auto;bottom:108px;transform:translate(-50%,0);width:84px;height:84px}.knob b{font-size:1.35rem}.knob .arrows{inset:-22px}
+  .hero-labels{bottom:44px}.hlabel{font-size:.66rem;letter-spacing:.12em;gap:8px}
+  .scroll-hint{display:none}
   .brand{padding:28px;min-height:auto}
   .stats{grid-template-columns:1fr 1fr}
   .process,.values,.sectors{grid-template-columns:1fr}
@@ -297,6 +318,12 @@ footer p{color:var(--muted);font-size:.9rem;margin-top:16px;max-width:340px}
   form,.contact-info{padding:30px 22px}
   form{grid-template-columns:1fr}
   .choice{grid-template-columns:1fr}
+  .dial-head .eyebrow{letter-spacing:.16em}.dial-head .eyebrow::before{display:none}
+  .dial{width:min(250px,68vw)}
+  .dial-center b{font-size:clamp(2.6rem,14vw,3.4rem)}.dial-center small{font-size:.62rem}
+  .range{height:12px}.range::-webkit-slider-thumb{width:34px;height:34px}.range::-moz-range-thumb{width:26px;height:26px}
+  .reco{padding:20px;margin-top:22px;min-height:0}.reco h4{font-size:1.18rem}
+  .reco-links{flex-direction:column}.reco-links a{text-align:center;padding:13px 18px}
   .fgrid{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
@@ -450,14 +477,16 @@ button[disabled]{opacity:.7;cursor:wait}
 <!-- ============ CONTROL 360 ============ -->
 <section class="sec dial-sec" id="control">
   <div class="wrap dial-grid">
-    <div>
+    <div class="dial-head">
       <span class="eyebrow rv">Control térmico 360°</span>
       <h2 class="rv d1">¿Qué temperatura tiene hoy tu nave?</h2>
       <p class="lead rv d2">Mueve el control y te decimos qué familia de equipos encaja. Frío o calor, verano o invierno: siempre hay una marca del grupo preparada.</p>
-      <input type="range" min="-5" max="45" value="32" class="range rv d3" id="range" aria-label="Temperatura del espacio">
-      <div class="range-labels"><span>-5 °C</span><span>20 °C</span><span>45 °C</span></div>
-      <div class="reco" id="reco"></div>
     </div>
+    <div class="dial-ctrl rv d3">
+      <input type="range" min="-5" max="45" value="32" class="range" id="range" aria-label="Temperatura del espacio">
+      <div class="range-labels"><span>-5 °C</span><span>20 °C</span><span>45 °C</span></div>
+    </div>
+    <div class="reco" id="reco"></div>
     <div class="dial-wrap rv d2">
       <div class="dial">
         <svg viewBox="0 0 400 400" aria-hidden="true">
@@ -699,6 +728,25 @@ function upd(){
   reco.style.borderColor=accent;reco.style.boxShadow=`0 20px 60px -30px ${accent}`;
   reco.innerHTML=`<div class="who" style="color:${accent}">Recomendación · ${r.who}</div><h4>${r.h}</h4><p>${r.p}</p><div class="reco-links">${r.links.map(([t,u],i)=>`<a class="${i?'sec':''}" href="${u}" ${u.startsWith('http')?'target="_blank" rel="noopener"':''} style="${i?`color:${accent};border-color:${accent}`:`background:${accent};color:${r.who==='Tools Place'?'#07090F':'#fff'}`}">${t} →</a>`).join('')}</div>`;
 }
+/* barra propia: la bola la dibujamos nosotros (siempre centrada) y el toque, el arrastre y el clic
+   funcionan igual en ordenador, Android e iPhone. El <input> nativo queda debajo, invisible, para el teclado. */
+function xRange(input){
+  const w=document.createElement('span'),th=document.createElement('span');
+  w.className='xr';th.className='xr-thumb';input.parentNode.insertBefore(w,input);w.appendChild(input);w.appendChild(th);
+  const min=+input.min,max=+input.max,step=+input.step||1;
+  const pos=()=>w.style.setProperty('--xp',(input.value-min)/(max-min));
+  const set=x=>{const b=input.getBoundingClientRect(),t=th.offsetWidth,p=Math.min(1,Math.max(0,(x-b.left-t/2)/(b.width-t))),v=Math.round((min+p*(max-min))/step)*step;
+    if(+input.value!==v){input.value=v;input.dispatchEvent(new Event('input',{bubbles:true}))}pos()};
+  let drag=false,sx=0,sy=0,lock=null;
+  w.addEventListener('pointerdown',e=>{if(e.button>0)return;drag=true;try{w.setPointerCapture(e.pointerId)}catch(_){}set(e.clientX);input.focus({preventScroll:true})});
+  w.addEventListener('pointermove',e=>{if(drag)set(e.clientX)});
+  ['pointerup','pointercancel'].forEach(n=>w.addEventListener(n,()=>drag=false));
+  /* iPhone: si Safari cancela el puntero, seguimos con los eventos táctiles; el gesto vertical sigue haciendo scroll */
+  w.addEventListener('touchstart',e=>{const t=e.touches[0];sx=t.clientX;sy=t.clientY;lock=null;set(sx)},{passive:true});
+  w.addEventListener('touchmove',e=>{const t=e.touches[0];if(lock===null)lock=Math.abs(t.clientX-sx)>=Math.abs(t.clientY-sy);if(lock){e.preventDefault();set(t.clientX)}},{passive:false});
+  input.addEventListener('input',pos);pos();
+}
+xRange(range);
 range.addEventListener('input',upd);upd();
 
 /* Envío de formularios (FormSubmit) */
