@@ -66,8 +66,8 @@ header.scrolled{background:rgba(7,9,15,.78);backdrop-filter:blur(16px);border-co
 /* ---------- HERO (split frío / calor) ---------- */
 .hero{position:relative;height:100vh;min-height:720px;overflow:hidden;--split:50%;cursor:ew-resize;user-select:none}
 .hero .side{position:absolute;inset:0;background-size:cover;background-position:center}
-.hero .cool{background-image:linear-gradient(115deg,rgba(6,20,40,.82),rgba(20,60,110,.55)),url("https://blizzcool.es/wp-content/uploads/2026/01/General-4.webp");background-color:#0E2440}
-.hero .heat{background-image:linear-gradient(245deg,rgba(40,8,4,.8),rgba(120,30,10,.5)),url("https://blizztherm.es/wp-content/uploads/2026/08/Banner-1.webp");background-color:#3A1208;clip-path:inset(0 0 0 var(--split))}
+.hero .cool{background-image:linear-gradient(115deg,rgba(6,20,40,.82),rgba(20,60,110,.55)),url("assets/img/General-4.avif");background-color:#0E2440}
+.hero .heat{background-image:linear-gradient(245deg,rgba(40,8,4,.8),rgba(120,30,10,.5)),url("assets/img/Banner-1.webp");background-color:#3A1208;clip-path:inset(0 0 0 var(--split))}
 .hero .cool::after,.hero .heat::after{content:"";position:absolute;inset:0}
 .hero .cool::after{background:radial-gradient(60% 70% at 20% 60%,rgba(107,141,200,.35),transparent 70%)}
 .hero .heat::after{background:radial-gradient(60% 70% at 80% 60%,rgba(232,97,26,.4),transparent 70%)}
@@ -128,9 +128,9 @@ section{position:relative}
 .brand .bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;filter:grayscale(.35) brightness(.7);transform:scale(1.05);transition:transform 1.2s var(--ease)}
 .brand:hover .bg{transform:scale(1.12)}
 .brand::before{content:"";position:absolute;inset:0;z-index:-1}
-.brand.therm .bg{background-image:url("https://blizztherm.es/wp-content/uploads/2026/08/Calefactores-por-infrarrojos.webp");background-color:#2A0E08}
+.brand.therm .bg{background-image:url("assets/img/Calefactores-por-infrarrojos.webp");background-color:#2A0E08}
 .brand.therm::before{background:linear-gradient(180deg,rgba(14,5,3,.86),rgba(12,5,4,.97) 55%),radial-gradient(80% 50% at 50% 115%,rgba(232,97,26,.45),transparent 70%)}
-.brand.cool .bg{background-image:url("https://blizzcool.es/wp-content/uploads/2026/01/Fundicion-2.webp");background-color:#0A1D33}
+.brand.cool .bg{background-image:url("assets/img/Fundicion-2.webp");background-color:#0A1D33}
 .brand.cool::before{background:linear-gradient(180deg,rgba(3,10,20,.86),rgba(3,9,18,.97) 55%),radial-gradient(80% 50% at 50% 115%,rgba(107,141,200,.45),transparent 70%)}
 .brand.therm:hover{box-shadow:0 30px 90px -30px rgba(232,97,26,.65)}
 .brand.cool:hover{box-shadow:0 30px 90px -30px rgba(107,141,200,.7)}
@@ -198,13 +198,14 @@ section{position:relative}
 .sectors{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:16px;margin-top:56px}
 .sector{position:relative;border-radius:22px;overflow:hidden;background:#141b28;display:flex;align-items:flex-end;padding:22px}
 .sector.big{grid-column:span 2;grid-row:span 2}
-.sector .img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1s var(--ease)}
+.sector .img{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;transition:transform 1s var(--ease)}
 .sector:hover .img{transform:scale(1.08)}
-.sector::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(7,9,15,.9))}
+.sector::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,15,.35),rgba(7,9,15,.55) 45%,rgba(7,9,15,.95))}
 .sector div{position:relative;z-index:1}
 .sector h4{font-size:1.15rem}
 .sector.big h4{font-size:1.7rem}
-.sector small{color:#c3cad6;font-size:.82rem}
+.sector small{color:#dde2ea;font-size:.82rem}
+.sector h4,.sector small{text-shadow:0 2px 12px rgba(0,0,0,.7)}
 .chips{display:flex;gap:6px;margin-bottom:8px}
 .chip{width:8px;height:8px;border-radius:50%}
 .chip.h{background:var(--heat)}.chip.c{background:var(--cool)}
@@ -345,7 +346,7 @@ button[disabled]{opacity:.7;cursor:wait}
 <header id="top">
   <div class="wrap nav" id="nav">
     <a href="index.html" class="logo" aria-label="Tools Place">
-      <img src="https://toolsplace.es/wp-content/uploads/2026/01/Logo-Web-2-e1770219357109.webp" alt="Tools Place" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <img src="assets/img/Logo-Web-2-e1770219357109.webp" alt="Tools Place" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <span class="fallback"><span class="t-tp">TOOLS</span> PLACE</span>
     </a>
     <ul>
@@ -355,7 +356,7 @@ button[disabled]{opacity:.7;cursor:wait}
       <li><a href="index.html#sectores">Sectores</a></li>
       <li><a href="index.html#contacto">Contacto</a></li>
     </ul>
-    <a href="index.html#contacto" class="btn btn-primary">Hablar con fábrica</a>
+    <a href="index.html#contacto" class="btn btn-primary">Contáctanos</a>
     <button class="burger" aria-label="Menú" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -403,7 +404,7 @@ button[disabled]{opacity:.7;cursor:wait}
       </div>
       <div class="full"><label for="obs">Observaciones</label><textarea id="obs" name="Observaciones" placeholder="Número de pedido o presupuesto, equipos que te interesan…"></textarea></div>
       <p class="pnote">Tools Place se reserva el derecho de establecer la forma de pago y el plazo que considere adecuados conforme a sus propios criterios y políticas internas.</p>
-      <label class="check full"><input type="checkbox" name="Aviso legal y privacidad" value="Aceptado" required> Al enviar este formulario aceptas el aviso legal y la política de privacidad. *</label>
+      <label class="check full"><input type="checkbox" name="Aviso legal y privacidad" value="Aceptado" required> Al enviar este formulario aceptas el <a href="aviso-legal.html" target="_blank" style="color:#fff;text-decoration:underline">aviso legal</a> y la <a href="politica-de-privacidad.html" target="_blank" style="color:#fff;text-decoration:underline">política de privacidad</a>. *</label>
       <p class="fstatus full" role="status" aria-live="polite"></p>
       <div class="full"><button class="btn btn-primary" type="submit">Enviar solicitud <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button></div>
     </form>
@@ -431,11 +432,11 @@ button[disabled]{opacity:.7;cursor:wait}
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <a href="index.html" class="logo"><img src="https://toolsplace.es/wp-content/uploads/2026/01/Logo-Web-2-e1770219357109.webp" alt="Tools Place" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fallback"><span class="t-tp">TOOLS</span> PLACE</span></a>
+        <a href="index.html" class="logo"><img src="assets/img/Logo-Web-2-e1770219357109.webp" alt="Tools Place" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fallback"><span class="t-tp">TOOLS</span> PLACE</span></a>
         <p>Fabricantes y distribuidores de maquinaria industrial para climatización y control ambiental.</p>
         <div class="fbrands">
-          <a href="https://blizztherm.es/" target="_blank" rel="noopener"><img src="https://toolsplace.es/wp-content/uploads/2026/06/LOGO_BLIZZTHERM_BLANCO-1024x200.png" alt="BlizzTherm" onerror="this.remove()"></a>
-          <a href="https://blizzcool.es/" target="_blank" rel="noopener"><img src="https://toolsplace.es/wp-content/uploads/2026/02/Recurso-1@2x-1-1024x131.webp" alt="BlizzCool" onerror="this.remove()"></a>
+          <a href="https://blizztherm.es/" target="_blank" rel="noopener"><img src="assets/img/LOGO_BLIZZTHERM_BLANCO-1024x200.png" alt="BlizzTherm" onerror="this.remove()"></a>
+          <a href="https://blizzcool.es/" target="_blank" rel="noopener"><img src="assets/img/Recurso-1@2x-1-1024x131.webp" alt="BlizzCool" onerror="this.remove()"></a>
         </div>
       </div>
       <div><h5>Empresa</h5><ul><li><a href="index.html#fabricantes">Quiénes somos</a></li><li><a href="index.html#fabricacion">Fabricación</a></li><li><a href="index.html#sectores">Sectores</a></li><li><a href="index.html#contacto">Contacto</a></li><li><a href="aplazamiento-de-pago.html">Pago aplazado</a></li></ul></div>
@@ -444,7 +445,7 @@ button[disabled]{opacity:.7;cursor:wait}
     </div>
     <div class="legal">
       <span>© <span id="yr"></span> Toolsplace, S.L. · CIF B42669192</span>
-      <div><a href="#">Aviso legal</a><a href="#">Política de privacidad</a><a href="#">Política de cookies</a><a href="aplazamiento-de-pago.html">Pago aplazado</a></div>
+      <div><a href="aviso-legal.html">Aviso legal</a><a href="politica-de-privacidad.html">Política de privacidad</a><a href="politica-de-cookies.html">Política de cookies</a><a href="#" data-cookie-settings>Configurar cookies</a><a href="aplazamiento-de-pago.html">Pago aplazado</a></div>
     </div>
   </div>
 </footer>
@@ -483,5 +484,6 @@ const pf=document.getElementById('pform');pf.addEventListener('reset-ui',()=>set
 wireForm(pf,'¡Solicitud enviada! La estudiaremos y te responderemos en un máximo de 2 días laborables.');
 })();
 </script>
+<script src="assets/js/cookies.js" defer></script>
 </body>
 </html>
