@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Solo páginas indexables: las legales llevan noindex y por eso no aparecen aquí. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://toolsplace.es/</loc>
+    <lastmod>2026-09-22</lastmod>
+  </url>
+  <url>
+    <loc>https://toolsplace.es/aplazamiento-de-pago.html</loc>
+    <lastmod>2026-09-22</lastmod>
+  </url>
+</urlset>

@@ -9,6 +9,17 @@ Rediseño de toolsplace.es, alineado con BlizzTherm y BlizzCool.
 - `assets/js/cookies.js` — banner de cookies (Aceptar / Rechazar / Configurar)
 - `assets/fonts/` + `assets/css/fonts.css` — tipografía Poppins alojada en la propia web (no se carga de Google Fonts)
 
+## SEO y compartir
+
+- `favicon.ico`, `assets/icons/` y `site.webmanifest`: icono de pestaña, de iPhone (pantalla de inicio) y de Android.
+- Open Graph / Twitter en la portada y en pago aplazado: imagen al compartir en `assets/og/` (1200×630).
+- `robots.txt` y `sitemap.xml` (solo páginas indexables; las legales llevan `noindex`). Al cambiar una página,
+  actualizar su `<lastmod>`.
+- Datos estructurados `Organization` (JSON-LD) en la portada: empresa, dirección, contacto, horario y marcas.
+- `.htaccess`: redirecciones 301 de las URLs antiguas de WordPress (`/aviso-legal/`…) y de `/index.html` a `/`.
+  Funciona si el dominio usa Apache en Plesk (lo habitual); si solo usa nginx, pasar esas reglas a
+  "Directivas adicionales de nginx".
+
 ## Cookies
 
 `assets/js/cookies.js` se incluye en todas las páginas. Google Analytics (`GT-NGS96JB2`, el mismo ID de la web actual)

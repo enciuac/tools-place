@@ -1,0 +1,15 @@
+# Redirecciones 301 de las URLs de la web anterior (WordPress) a las páginas nuevas,
+# para no perder su posicionamiento ni dejar enlaces rotos.
+<IfModule mod_alias.c>
+  RedirectMatch 301 ^/aviso-legal/?$ /aviso-legal.html
+  RedirectMatch 301 ^/politica-de-privacidad/?$ /politica-de-privacidad.html
+  RedirectMatch 301 ^/politica-de-cookies/?$ /politica-de-cookies.html
+  RedirectMatch 301 ^/aplazamiento-de-pago/?$ /aplazamiento-de-pago.html
+</IfModule>
+
+# /index.html -> / (una sola URL para la portada)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{THE_REQUEST} \s/index\.html[\s?]
+  RewriteRule ^index\.html$ / [R=301,L]
+</IfModule>
