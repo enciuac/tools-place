@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tools Place | Fabricantes de climatización industrial · BlizzTherm y BlizzCool</title>
 <meta name="description" content="Tools Place, S.L. es el fabricante detrás de BlizzTherm (calefacción industrial) y BlizzCool (refrigeración y ventilación industrial). Control térmico 360° para naves, talleres y grandes espacios.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/fonts.css">
 <style>
 :root{
   --bg:#07090F;
@@ -369,7 +367,7 @@ button[disabled]{opacity:.7;cursor:wait}
 <section class="sec" id="fabricantes">
   <div class="wrap maker">
     <div class="maker-visual rv" id="mv">
-      <img src="assets/img/Section-2-scaled-1-1024x572.png" alt="Planta industrial Tools Place" loading="lazy" onerror="this.style.display='none'">
+      <img src="assets/img/Section-2-scaled-1-1024x572.webp" alt="Planta industrial Tools Place" loading="lazy" onerror="this.style.display='none'">
       <div class="badge-float">
         <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M2 20h20M4 20V9l5 3V9l5 3V5l6 4v11"/></svg></div>
         <div><strong>Fabricante directo</strong><small>Sin intermediarios: de nuestra planta a tu nave.</small></div>
@@ -464,8 +462,8 @@ button[disabled]{opacity:.7;cursor:wait}
       <div class="dial">
         <svg viewBox="0 0 400 400" aria-hidden="true">
           <defs>
-            <linearGradient id="dg" x1="0" y1="1" x2="1" y2="0">
-              <stop offset="0" stop-color="#7AB35B"/><stop offset=".35" stop-color="#6B8DC8"/><stop offset=".6" stop-color="#9aa6b8"/><stop offset=".8" stop-color="#E8611A"/><stop offset="1" stop-color="#B8181F"/>
+            <linearGradient id="dg" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(-135 .5 .5)">
+              <stop offset=".1" stop-color="#7AB35B"/><stop offset=".3" stop-color="#6B8DC8"/><stop offset=".5" stop-color="#9aa6b8"/><stop offset=".7" stop-color="#E8611A"/><stop offset=".9" stop-color="#B8181F"/>
             </linearGradient>
             <filter id="gl"><feGaussianBlur stdDeviation="6"/></filter>
           </defs>
@@ -510,7 +508,7 @@ button[disabled]{opacity:.7;cursor:wait}
     <span class="eyebrow rv">Sectores</span>
     <h2 class="rv d1" style="margin-top:18px">Donde trabajan nuestros equipos</h2>
     <div class="sectors">
-      <div class="sector big rv"><div class="img" style="background-image:url('assets/img/Section-1-scaled-1-1536x857.png')"></div><div><div class="chips"><i class="chip c"></i><i class="chip h"></i></div><h4>Naves industriales y fábricas</h4><small>Calefacción en invierno, refrigeración en verano.</small></div></div>
+      <div class="sector big rv"><div class="img" style="background-image:url('assets/img/Section-1-scaled-1-1536x857.webp')"></div><div><div class="chips"><i class="chip c"></i><i class="chip h"></i></div><h4>Naves industriales y fábricas</h4><small>Calefacción en invierno, refrigeración en verano.</small></div></div>
       <div class="sector rv d1"><div class="img" style="background-image:url('assets/img/Muelle-de-Carga.webp')"></div><div><div class="chips"><i class="chip c"></i><i class="chip h"></i></div><h4>Logística</h4><small>Almacenes y muelles de carga</small></div></div>
       <div class="sector rv d2"><div class="img" style="background-image:url('assets/img/Calor-a-gas.webp')"></div><div><div class="chips"><i class="chip h"></i></div><h4>Talleres</h4><small>Calor rápido y uniforme</small></div></div>
       <div class="sector rv d1"><div class="img" style="background-image:url('assets/img/Aeropuerto.avif')"></div><div><div class="chips"><i class="chip c"></i></div><h4>Grandes superficies</h4><small>Retail, eventos y hostelería</small></div></div>
@@ -684,12 +682,12 @@ for(let i=0;i<=50;i++){const a=(135+i*270/50)*Math.PI/180,r1=i%5?142:136,r2=148;
   l.setAttribute('stroke','rgba(255,255,255,'+(i%5?.12:.35)+')');l.setAttribute('stroke-width',i%5?1:2);ticks.appendChild(l)}
 const range=document.getElementById('range'),dT=document.getElementById('dialT'),dL=document.getElementById('dialL'),reco=document.getElementById('reco');
 const R=[
-  {max:5,  lbl:'Frío extremo', col:'#FFA06A', who:'BlizzTherm', h:'Cañones de calor a gas o gasóleo', p:'Máxima potencia para calentar rápido naves grandes, obras y espacios abiertos a muy baja temperatura.', links:[['Ver cañones a gas','https://blizztherm.es/canon-calor-industrial/gas/'],['Ver cañones a gasóleo','https://blizztherm.es/canon-calor-industrial/gasoil/']]},
-  {max:14, lbl:'Frío',         col:'#FFA06A', who:'BlizzTherm', h:'Calefactores por infrarrojos', p:'Calor directo sobre personas y superficies, ideal para talleres y naves altas donde calentar el aire no compensa.', links:[['Ver calefactores por infrarrojos','https://blizztherm.es/calefactor-infrarrojos-industrial/']]},
-  {max:19, lbl:'Fresco',       col:'#FFC08A', who:'BlizzTherm', h:'Calefactores eléctricos industriales', p:'De 5.000 W a 20 kW, portátiles y con termostato de precisión para mantener el confort sin disparar el consumo.', links:[['Ver calefactores eléctricos','https://blizztherm.es/calefactor-industrial-electrico/']]},
+  {max:5,  lbl:'Frío extremo', col:'#8FB4F0', who:'BlizzTherm', h:'Cañones de calor a gas o gasóleo', p:'Máxima potencia para calentar rápido naves grandes, obras y espacios abiertos a muy baja temperatura.', links:[['Ver cañones a gas','https://blizztherm.es/canon-calor-industrial/gas/'],['Ver cañones a gasóleo','https://blizztherm.es/canon-calor-industrial/gasoil/']]},
+  {max:14, lbl:'Frío',         col:'#A9C3F0', who:'BlizzTherm', h:'Calefactores por infrarrojos', p:'Calor directo sobre personas y superficies, ideal para talleres y naves altas donde calentar el aire no compensa.', links:[['Ver calefactores por infrarrojos','https://blizztherm.es/calefactor-infrarrojos-industrial/']]},
+  {max:19, lbl:'Fresco',       col:'#C9D8F2', who:'BlizzTherm', h:'Calefactores eléctricos industriales', p:'De 5.000 W a 20 kW, portátiles y con termostato de precisión para mantener el confort sin disparar el consumo.', links:[['Ver calefactores eléctricos','https://blizztherm.es/calefactor-industrial-electrico/']]},
   {max:25, lbl:'Confort',      col:'#ffffff', who:'Tools Place', h:'Tu espacio está en su punto', p:'Aun así, prepárate para la próxima temporada: con BlizzTherm y BlizzCool cubres el invierno y el verano con un solo proveedor.', links:[['Planificar con un técnico','#contacto']]},
-  {max:31, lbl:'Calor',        col:'#A9C3F0', who:'BlizzCool', h:'Ventiladores industriales', p:'Movimiento de aire de gran caudal para reducir la sensación térmica en naves, gimnasios y almacenes.', links:[['Ver ventiladores industriales','https://blizzcool.es/ventilador-industrial/'],['Ventiladores de techo HVLS','https://blizzcool.es/ventilador-industrial/de-techo/']]},
-  {max:99, lbl:'Calor extremo',col:'#A9C3F0', who:'BlizzCool', h:'Climatizadores evaporativos', p:'Reducen la temperatura de forma natural con bajo consumo. El BC 395 mueve hasta 345 m³/min.', links:[['Ver climatizadores evaporativos','https://blizzcool.es/climatizador-evaporativo-industrial/'],['Nebulizadores','https://blizzcool.es/nebulizadores/']]}
+  {max:31, lbl:'Calor',        col:'#FFC08A', who:'BlizzCool', h:'Ventiladores industriales', p:'Movimiento de aire de gran caudal para reducir la sensación térmica en naves, gimnasios y almacenes.', links:[['Ver ventiladores industriales','https://blizzcool.es/ventilador-industrial/'],['Ventiladores de techo HVLS','https://blizzcool.es/ventilador-industrial/de-techo/']]},
+  {max:99, lbl:'Calor extremo',col:'#FFA06A', who:'BlizzCool', h:'Climatizadores evaporativos', p:'Reducen la temperatura de forma natural con bajo consumo. El BC 395 mueve hasta 345 m³/min.', links:[['Ver climatizadores evaporativos','https://blizzcool.es/climatizador-evaporativo-industrial/'],['Nebulizadores','https://blizzcool.es/nebulizadores/']]}
 ];
 function upd(){
   const v=+range.value, p=(v+5)/50;

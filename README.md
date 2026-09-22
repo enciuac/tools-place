@@ -7,6 +7,7 @@ Rediseño de toolsplace.es, alineado con BlizzTherm y BlizzCool.
 - `aviso-legal.html`, `politica-de-privacidad.html`, `politica-de-cookies.html` — páginas legales (estilo en `assets/css/legal.css`)
 - `assets/img/` — imágenes y logos (copias locales, no se enlazan desde toolsplace/blizztherm/blizzcool)
 - `assets/js/cookies.js` — banner de cookies (Aceptar / Rechazar / Configurar)
+- `assets/fonts/` + `assets/css/fonts.css` — tipografía Poppins alojada en la propia web (no se carga de Google Fonts)
 
 ## Cookies
 
